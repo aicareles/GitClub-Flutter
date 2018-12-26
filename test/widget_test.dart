@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gitclub/ui/myapp.dart';
+import 'package:gitclub/ui/MyApp.dart';
 
 import 'package:gitclub/main.dart';
 

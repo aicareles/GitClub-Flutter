@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gitclub/constance/Constants.dart';
 import 'package:gitclub/constance/colors.dart';
 import 'package:gitclub/ui/home/HomePage.dart';
-import 'package:gitclub/ui/my/Person.dart';
-import 'package:gitclub/ui/notfound_page.dart';
+import 'package:gitclub/ui/my/PersonPage.dart';
+import 'package:gitclub/ui/NotFoundPage.dart';
 import 'package:gitclub/ui/search/SearchPage.dart';
-import 'package:gitclub/ui/splash.dart';
+import 'package:gitclub/ui/Splash.dart';
 import 'package:gitclub/ui/submit/SubmitPage.dart';
 
 //首页

@@ -10,11 +10,6 @@ class PersonPage extends StatefulWidget {
 }
 
 class PersonPageState extends State<PersonPage> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +41,7 @@ class PersonPageState extends State<PersonPage> {
                       ),
                       color: Colors.blue,
                     ),
-//                      preferredSize: new Size(double.infinity, 46.0)
+                      preferredSize: new Size(double.infinity, 0.0)
                   ),
                   // 46.0为TabBar的高度，也就是tabs.dart中的_kTabHeight值，因为flutter不支持反射所以暂时没法通过代码获取
                   flexibleSpace: FlexibleSpaceBar(

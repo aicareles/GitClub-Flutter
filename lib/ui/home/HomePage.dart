@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gitclub/ui/home/HomeListPage.dart';
-import 'package:gitclub/ui/myapp.dart';
+import 'package:gitclub/ui/MyApp.dart';
 import 'package:gitclub/ui/search/SearchPage.dart';
 import 'package:gitclub/widget/FloatButton.dart';
 
