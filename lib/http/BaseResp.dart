@@ -4,13 +4,13 @@
 "errorMsg": ""
 }*/
 
-class GitClubResp {
+class GitClubResp<T> {
 
   int code;
 
   String msg;
 
-  Object data;
+  T data;
 
   GitClubResp({this.code, this.msg, this.data});
 

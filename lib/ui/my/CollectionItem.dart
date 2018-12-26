@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gitclub/constance/Constants.dart';
+import 'package:gitclub/constance/colors.dart';
+import 'package:gitclub/model/Article.dart';
 import 'package:gitclub/ui/article/ArticleDetailPage.dart';
 
 ///个人感觉条目比较复杂的话可以单独拿出来,而且可以复用.可以对比CollectListPage.dart中的item哪个更合理
 class CollectionItem extends StatefulWidget {
-  var itemData;
+  ArticleModel itemData;
 
   CollectionItem(var itemData) {
     this.itemData = itemData;
@@ -17,11 +20,11 @@ class CollectionItem extends StatefulWidget {
 
 class CollectionItemState extends State<CollectionItem> {
 
-  void _itemClick(itemData) async {
+  void _itemClick(ArticleModel itemData) async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
       return new ArticleDetailPage(
-        title: itemData['title'],
-        url: itemData['link'],
+        title: itemData.title,
+        url: itemData.link,
       );
     }));
   }
@@ -36,16 +39,16 @@ class CollectionItemState extends State<CollectionItem> {
               children: <Widget>[
                 new ClipOval(
                   child: new FadeInImage.assetNetwork(
-                      placeholder: "images/ic_launcher_round.png",
+                      placeholder: Images.defalutHomeListAvatar,
                       fit: BoxFit.fitWidth,
-                      image: widget.itemData['user']['avatar'],
-                      width: 30.0,
-                      height: 30.0
+                      image: widget.itemData.userModel.avatar,
+                      width: Demins.ITEM_AVATAR_SIZE,
+                      height: Demins.ITEM_AVATAR_SIZE
                   ),
                 ),
                 new Container(
                   child: new Text(
-                      widget.itemData['user']['nick_name'],
+                      widget.itemData.userModel.nick_name,
                       style: new TextStyle(color: Theme
                           .of(context)
                           .accentColor)
@@ -55,7 +58,7 @@ class CollectionItemState extends State<CollectionItem> {
 
               ],
             )),
-        new Text(widget.itemData['date'])
+        new Text(widget.itemData.date)
       ],
     );
 
@@ -63,9 +66,9 @@ class CollectionItemState extends State<CollectionItem> {
       children: <Widget>[
         new Expanded(
           child: new Text.rich(
-            new TextSpan(text: widget.itemData['title']),
+            new TextSpan(text: widget.itemData.title),
             softWrap: true,
-            style: new TextStyle(fontSize: 16.0, color: Colors.black),
+            style: new TextStyle(fontSize: FontSize.ITEM_TITLE_SIZE, color: AppColors.textBlack),
             textAlign: TextAlign.left,
           ),
         )
@@ -73,7 +76,7 @@ class CollectionItemState extends State<CollectionItem> {
     );
 
     Text des = new Text(
-        widget.itemData['des'],
+        widget.itemData.des,
         maxLines: 3,
         overflow: TextOverflow.ellipsis,
         style: new TextStyle(color: Theme

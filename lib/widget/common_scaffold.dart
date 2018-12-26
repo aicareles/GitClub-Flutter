@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gitclub/constance/uidata.dart';
+import 'package:gitclub/constance/colors.dart';
 
 class CommonScaffold extends StatelessWidget {
   final appTitle;
@@ -33,7 +33,7 @@ class CommonScaffold extends StatelessWidget {
         child: Ink(
           height: 50.0,
           decoration: new BoxDecoration(
-              gradient: new LinearGradient(colors: UIData.kitGradients)),
+              gradient: new LinearGradient(colors: AppColors.kitGradients)),
           child: new Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,

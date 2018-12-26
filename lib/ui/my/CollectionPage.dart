@@ -23,7 +23,7 @@ class CollectionPage extends StatefulWidget {
 }
 
 class CollectionPageState extends State<CollectionPage> {
-  List listData = new List();
+  List<ArticleModel> listData = new List<ArticleModel>();
 
   var bannerData;
   var curPage = 0;
@@ -115,26 +115,26 @@ class CollectionPageState extends State<CollectionPage> {
   void getArticles() {
     String url = widget.tag == 0 ? Api.COLLECT_LIST : Api.CONTRIBUTE_LIST;
     Map<String, String> map = new Map();
-    map["page"] = curPage.toString();
-    map["size"] = "10";
-    map["user_id"] = "3";
+    map[Parms.PAGE] = curPage.toString();
+    map[Parms.SIZE] = Parms.SIZE_VALUE;
+    map[Parms.USER_ID] = "3";
     HttpUtil.post(url, (data) {
       if (data != null) {
-        List articles = data;
-        var _listData = articles;
+        List responseJson = data;
+        List<ArticleModel> articles = responseJson.map((m) => ArticleModel.fromJson(m)).toList();
         listTotalSize += articles.length;
         setState(() {
-          List list1 = new List();
+          List<ArticleModel> list1 = new List<ArticleModel>();
           if (curPage == 0) {
             listData.clear();
           }
           curPage++;
 
           list1.addAll(listData);
-          list1.addAll(_listData);
-          if (list1.length >= listTotalSize) {
-            list1.add(Constants.END_LINE_TAG);
-          }
+          list1.addAll(articles);
+//          if (list1.length >= listTotalSize) {
+//            list1.add(Constants.END_LINE_TAG);
+//          }
           listData = list1;
         });
       }

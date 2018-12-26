@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:gitclub/model/Article.dart';
 import 'package:gitclub/ui/article/ArticleItem.dart';
 import 'package:gitclub/constance/Constants.dart';
 import 'package:gitclub/http/Api.dart';
@@ -28,7 +29,7 @@ class SearchListPageState extends State<SearchListPage> {
   int curPage = 0;
 
   Map<String, String> map = new Map();
-  List listData = new List();
+  List<ArticleModel> listData = new List<ArticleModel>();
   int listTotalSize = 0;
   ScrollController _contraller = new ScrollController();
 
@@ -74,16 +75,18 @@ class SearchListPageState extends State<SearchListPage> {
 
   void _articleQuery() {
     String url = Api.ARTICLE_QUERY;
-    map['page'] = curPage.toString();
-    map['size'] = '10';
-    map['query'] = widget.queryKey;
+    map[Parms.PAGE] = curPage.toString();
+    map[Parms.SIZE] = Parms.SIZE_VALUE;
+    map[Parms.QUERY] = widget.queryKey;
 
     HttpUtil.post(url, (data) {
       if (data != null) {
-        List articles = data;
+//        List articles = data;
+        List responseJson = data;
+        List<ArticleModel> articles = responseJson.map((m) => ArticleModel.fromJson(m)).toList();
         listTotalSize = articles.length;
         setState(() {
-          List list1 = new List();
+          List<ArticleModel> list1 = new List<ArticleModel>();
           if (curPage == 0) {
             listData.clear();
           }
@@ -91,11 +94,9 @@ class SearchListPageState extends State<SearchListPage> {
 
           list1.addAll(listData);
           list1.addAll(articles);
-          if (list1.length >= listTotalSize) {
-
-            list1.add(Constants.END_LINE_TAG);
-
-          }
+//          if (list1.length >= listTotalSize) {
+//            list1.add(Constants.END_LINE_TAG);
+//          }
           listData = list1;
         });
       }

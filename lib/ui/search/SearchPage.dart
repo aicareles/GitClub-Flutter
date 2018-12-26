@@ -17,6 +17,8 @@ class SearchPageState extends State<SearchPage> {
   TextEditingController _searchController = new TextEditingController();
   List<Widget> hotkeyWidgets = new List();
   List<String> hotkeyDatas = new List();
+  // 光标跳转的输入框对象
+  FocusNode focusNode = FocusNode();
 
   SearchListPage _searchListPage;
   String searchStr ;
@@ -26,12 +28,9 @@ class SearchPageState extends State<SearchPage> {
   void initState() {
     super.initState();
     initKeyDatas();
-
     _searchController = new TextEditingController(text: searchStr);
     changeContent();
   }
-
-
 
   void changeContent(){
     setState(() {
@@ -42,7 +41,8 @@ class SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     TextField searchField = new TextField(
       style: new TextStyle(color: Colors.white),
-      autofocus: true,
+      autofocus: false,
+      focusNode: focusNode,
       decoration: new InputDecoration(
         border: InputBorder.none,
         fillColor: Colors.white,
@@ -61,14 +61,15 @@ class SearchPageState extends State<SearchPage> {
               icon: new Icon(Icons.search),
               onPressed: () {
                 changeContent();
+                focusNode.unfocus();
               }),
           new IconButton(
               icon: new Icon(Icons.close),
               onPressed: () {
+                focusNode.unfocus();
                 setState(() {
                   _searchController.clear();
                 });
-
               }),
         ],
       ),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:gitclub/constance/Constants.dart';
+import 'package:gitclub/constance/colors.dart';
+import 'package:gitclub/model/Article.dart';
 import 'package:gitclub/ui/article/ArticleDetailPage.dart';
 import 'package:gitclub/utils/DataUtils.dart';
 import 'package:gitclub/utils/StringUtils.dart';
-import 'package:gitclub/http/Api.dart';
-import 'package:gitclub/http/HttpUtil.dart';
 
 ///个人感觉条目比较复杂的话可以单独拿出来,而且可以复用.可以对比CollectListPage.dart中的item哪个更合理
 class ArticleItem extends StatefulWidget {
-  var itemData;
+  ArticleModel itemData;
 
   //是否来自搜索列表
   bool isSearch;
@@ -50,39 +51,22 @@ class ArticleItemState extends State<ArticleItem> {
 //    }));
   }
 
-  void _itemClick(itemData) async {
+  void _itemClick(ArticleModel itemData) async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
       return new ArticleDetailPage(
-        title: itemData['title'],
-        url: itemData['link'],
+        title: itemData.title,
+        url: itemData.link,
       );
     }));
   }
 
   //收藏/取消收藏
-  void _itemCollect(var itemData) {
-    String url;
-    if (itemData['collect']) {
-//      url = Api.UNCOLLECT_ORIGINID;
-    } else {
-      url = Api.COLLECT;
-    }
-    Map<String, String> map = new Map();
-    map["article_id"] = itemData['article_id'];
-    map["user_id"] = '3';
-    map["type"] = '1';
-    map["status"] = '1';
-    HttpUtil.post(url, (data) {
-      setState(() {
-        itemData['collect'] = !itemData['collect'];
-      });
-    }, params: map);
+  void _itemCollect(ArticleModel itemData) {
+
   }
 
   @override
   Widget build(BuildContext context) {
-//    bool isCollect = widget.itemData["collect"];
-
     Row row1 = new Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -91,16 +75,16 @@ class ArticleItemState extends State<ArticleItem> {
               children: <Widget>[
                 new ClipOval(
                   child: new FadeInImage.assetNetwork(
-                      placeholder: "images/ic_launcher_round.png",
+                      placeholder: Images.defalutHomeListAvatar,
                       fit: BoxFit.fitWidth,
-                      image: widget.itemData['user']['avatar'],
-                      width: 30.0,
-                      height: 30.0
+                      image: widget.itemData.userModel.avatar,
+                      width: Demins.ITEM_AVATAR_SIZE,
+                      height: Demins.ITEM_AVATAR_SIZE
                   ),
                 ),
                 new Container(
                   child: new Text(
-                      widget.itemData['user']['nick_name'],
+                      widget.itemData.userModel.nick_name,
                       style: new TextStyle(color: Theme
                           .of(context)
                           .accentColor)
@@ -110,7 +94,7 @@ class ArticleItemState extends State<ArticleItem> {
 
               ],
             )),
-        new Text(widget.itemData['date'])
+        new Text(widget.itemData.date.toString())
       ],
     );
 
@@ -119,10 +103,10 @@ class ArticleItemState extends State<ArticleItem> {
         new Expanded(
           child: new Text.rich(
             widget.isSearch
-                ? StringUtils.getTextSpan(widget.itemData['title'], widget.id)
-                : new TextSpan(text: widget.itemData['title']),
+                ? StringUtils.getTextSpan(widget.itemData.title, widget.id)
+                : new TextSpan(text: widget.itemData.title),
             softWrap: true,
-            style: new TextStyle(fontSize: 16.0, color: Colors.black),
+            style: new TextStyle(fontSize: FontSize.ITEM_TITLE_SIZE, color: AppColors.textBlack),
             textAlign: TextAlign.left,
           ),
         )
@@ -134,7 +118,7 @@ class ArticleItemState extends State<ArticleItem> {
       children: <Widget>[
         new Expanded(
           child: new Image.network(
-            widget.itemData['img_url'],
+            widget.itemData.img_url,
           ),
         ),
       ],
@@ -146,14 +130,14 @@ class ArticleItemState extends State<ArticleItem> {
         new Row(
           children: <Widget>[
             new Icon(Icons.remove_red_eye, color: Colors.black12),
-            new Text(widget.itemData['views'].toString(),
+            new Text(widget.itemData.views.toString(),
                 style: TextStyle(color: Colors.black12))
           ],
         ),
         new Row(
           children: <Widget>[
             new Icon(Icons.favorite_border, color: Colors.black12),
-            new Text(widget.itemData['stars'].toString(),
+            new Text(widget.itemData.stars.toString(),
                 style: TextStyle(color: Colors.black12))
           ],
         ),

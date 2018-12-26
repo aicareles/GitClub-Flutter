@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gitclub/constance/Constants.dart';
 import 'package:gitclub/constance/colors.dart';
-import 'package:gitclub/constance/uidata.dart';
 import 'package:gitclub/ui/home/HomePage.dart';
 import 'package:gitclub/ui/my/Person.dart';
 import 'package:gitclub/ui/notfound_page.dart';
 import 'package:gitclub/ui/search/SearchPage.dart';
 import 'package:gitclub/ui/splash.dart';
+import 'package:gitclub/ui/submit/SubmitPage.dart';
 
 //首页
 class GitClubApp extends StatelessWidget {
@@ -18,12 +19,13 @@ class GitClubApp extends StatelessWidget {
       "/home": (BuildContext context) => HomePage(),
       "/search": (BuildContext context) => SearchPage(null),
       "/person": (BuildContext context) => PersonPage(),
+      "/submit": (BuildContext context) => SubmitPage(),
     },
     onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(
         builder: (context) => new NotFoundPage(
-              appTitle: UIData.coming_soon,
+              appTitle: Constants.coming_soon,
               icon: Icons.error,
-              title: UIData.coming_soon,
+              title: Constants.coming_soon,
               message: "Under Development",
               iconColor: Colors.green,
             )),

@@ -18,7 +18,7 @@ import 'package:gitclub/http/Api.dart';
 //}
 
 //这里只封装了常见的get和post请求类型,不带Cookie
-class HttpUtil {
+class HttpUtil<T> {
   static const String GET = "get";
   static const String POST = "post";
 
@@ -91,8 +91,8 @@ class HttpUtil {
 
       //以下部分可以根据自己业务需求封装,这里是errorCode>=0则为请求成功,data里的是数据部分
       //记得Map中的泛型为dynamic
-//      Map<String, dynamic> map = json.decode(res.body);
-      final responseJson  = json.decode(res.body);
+      Map<String, dynamic> responseJson = json.decode(res.body);
+//      final responseJson  = json.decode(res.body);
       GitClubResp resp = new GitClubResp.fromJson(responseJson);
       errorCode = resp.code;
       errorMsg = resp.msg;

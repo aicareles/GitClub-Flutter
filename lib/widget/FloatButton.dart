@@ -81,7 +81,10 @@ class _FancyFabState extends State<FancyFab>
   Widget submit() {
     return Container(
       child: FloatingActionButton(
-        onPressed: onSubmitPressed,
+//        onPressed: onSubmitPressed,
+        onPressed: (){
+          Navigator.pushNamed(context, "/submit");
+        },
         tooltip: 'Add',
         child: Icon(Icons.add_circle),
         heroTag: null,
