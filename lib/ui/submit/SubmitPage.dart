@@ -5,7 +5,6 @@ import 'package:gitclub/constance/colors.dart';
 import 'package:gitclub/widget/Loading.dart';
 import 'package:gitclub/widget/ScrollFocusNode.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class SubmitPage extends StatefulWidget {
 
