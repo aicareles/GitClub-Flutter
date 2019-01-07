@@ -7,6 +7,7 @@ import 'package:gitclub/ui/NotFoundPage.dart';
 import 'package:gitclub/ui/search/SearchPage.dart';
 import 'package:gitclub/ui/Splash.dart';
 import 'package:gitclub/ui/submit/SubmitPage.dart';
+import 'package:gitclub/ui/test.dart';
 
 //首页
 class GitClubApp extends StatelessWidget {
@@ -20,6 +21,7 @@ class GitClubApp extends StatelessWidget {
       "/search": (BuildContext context) => SearchPage(null),
       "/person": (BuildContext context) => PersonPage(),
       "/submit": (BuildContext context) => SubmitPage(),
+      "/test": (BuildContext context) => TestPage(),
     },
     onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(
         builder: (context) => new NotFoundPage(
@@ -33,6 +35,7 @@ class GitClubApp extends StatelessWidget {
         primaryColor: AppColors.colorPrimary,
         accentColor: AppColors.colorPrimary),
     home: SplashPage(),
+//    home: TestPage(),
   );
 
   @override

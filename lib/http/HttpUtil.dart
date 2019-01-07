@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:gitclub/http/BaseResp.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:gitclub/http/Api.dart';
+import 'package:http_parser/http_parser.dart';
 
 /*数据接口类型errorCode>0是接口请求成功
 {
@@ -117,4 +119,21 @@ class HttpUtil<T> {
     }
     print("errorMsg :"+errorMsg);
   }
+
+
+//  //上传文件
+//  static void httpUploadFile(
+//      final String url,
+//      final File file) async {
+//    List<int> bytes = await file.readAsBytes();
+//    var request = new http.MultipartRequest("POST", Uri);
+////    request.fields['article_img'] = 'article_img';
+//    request.files.add(new http.MultipartFile.fromBytes('article_img', bytes, contentType: new MediaType('application', 'x-www-form-urlencoded')));
+//
+//    request.send().then((response) {
+//      if (response.statusCode == 200) print("Uploaded!");
+//    });
+//  }
+
+  
 }

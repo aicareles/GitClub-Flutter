@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gitclub/constance/Constants.dart';
 import 'package:gitclub/ui/home/HomeListPage.dart';
 import 'package:gitclub/ui/MyApp.dart';
 import 'package:gitclub/ui/search/SearchPage.dart';
@@ -15,16 +16,11 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(
-          "GitClub",
+          App.appName,
           style: new TextStyle(color: Colors.white),
         ),
         actions: <Widget>[
@@ -33,7 +29,6 @@ class HomePageState extends State<HomePage> {
               onPressed: () async {
                 GitClubApp.materialApp.navigatorKey.currentState.push(new MaterialPageRoute(
                     builder: (context) => new SearchPage(null)));
-//                  Navigator.pushNamed(context, "/search");
               })
         ],
       ),
@@ -41,7 +36,14 @@ class HomePageState extends State<HomePage> {
         children: <Widget>[new HomeListPage()],
         index: 0,
       ),
-      floatingActionButton: new FancyFab(null, null),
+      floatingActionButton: new FancyFab(
+        onPersonPressed: (){
+          Navigator.pushNamed(context, "/person");
+        },
+        onSubmitPressed: (){
+          Navigator.pushNamed(context, "/submit");
+        },
+      ),
     );
   }
 }

@@ -8,24 +8,24 @@ import 'package:gitclub/utils/StringUtils.dart';
 
 ///个人感觉条目比较复杂的话可以单独拿出来,而且可以复用.可以对比CollectListPage.dart中的item哪个更合理
 class ArticleItem extends StatefulWidget {
-  ArticleModel itemData;
+  ArticleModel _itemData;
 
   //是否来自搜索列表
-  bool isSearch;
+  bool _isSearch;
 
   //搜索列表的id
-  String id;
+  String _id;
 
   ArticleItem(var itemData) {
-    this.itemData = itemData;
-    this.isSearch = false;
+    this._itemData = itemData;
+    this._isSearch = false;
   }
 
   //命名构造函数,搜索列表的item和普通的item有些不一样
   ArticleItem.isFromSearch(var itemData, String id) {
-    this.itemData = itemData;
-    this.isSearch = true;
-    this.id = id;
+    this._itemData = itemData;
+    this._isSearch = true;
+    this._id = id;
   }
 
   @override
@@ -77,14 +77,14 @@ class ArticleItemState extends State<ArticleItem> {
                   child: new FadeInImage.assetNetwork(
                       placeholder: Images.defalutHomeListAvatar,
                       fit: BoxFit.fitWidth,
-                      image: widget.itemData.userModel.avatar,
+                      image: widget._itemData.userModel.avatar,
                       width: Demins.ITEM_AVATAR_SIZE,
                       height: Demins.ITEM_AVATAR_SIZE
                   ),
                 ),
                 new Container(
                   child: new Text(
-                      widget.itemData.userModel.nick_name,
+                      widget._itemData.userModel.nick_name,
                       style: new TextStyle(color: Theme
                           .of(context)
                           .accentColor)
@@ -94,7 +94,7 @@ class ArticleItemState extends State<ArticleItem> {
 
               ],
             )),
-        new Text(widget.itemData.date.toString())
+        new Text(widget._itemData.date.toString())
       ],
     );
 
@@ -102,9 +102,9 @@ class ArticleItemState extends State<ArticleItem> {
       children: <Widget>[
         new Expanded(
           child: new Text.rich(
-            widget.isSearch
-                ? StringUtils.getTextSpan(widget.itemData.title, widget.id)
-                : new TextSpan(text: widget.itemData.title),
+            widget._isSearch
+                ? StringUtils.getTextSpan(widget._itemData.title, widget._id)
+                : new TextSpan(text: widget._itemData.title),
             softWrap: true,
             style: new TextStyle(fontSize: FontSize.ITEM_TITLE_SIZE, color: AppColors.textBlack),
             textAlign: TextAlign.left,
@@ -118,7 +118,7 @@ class ArticleItemState extends State<ArticleItem> {
       children: <Widget>[
         new Expanded(
           child: new Image.network(
-            widget.itemData.img_url,
+            widget._itemData.img_url,
           ),
         ),
       ],
@@ -130,14 +130,14 @@ class ArticleItemState extends State<ArticleItem> {
         new Row(
           children: <Widget>[
             new Icon(Icons.remove_red_eye, color: Colors.black12),
-            new Text(widget.itemData.views.toString(),
+            new Text(widget._itemData.views.toString(),
                 style: TextStyle(color: Colors.black12))
           ],
         ),
         new Row(
           children: <Widget>[
             new Icon(Icons.favorite_border, color: Colors.black12),
-            new Text(widget.itemData.stars.toString(),
+            new Text(widget._itemData.stars.toString(),
                 style: TextStyle(color: Colors.black12))
           ],
         ),
@@ -182,7 +182,7 @@ class ArticleItemState extends State<ArticleItem> {
       child: new InkWell(
         child: column,
         onTap: () {
-          _itemClick(widget.itemData);
+          _itemClick(widget._itemData);
         },
       ),
     );

@@ -78,10 +78,8 @@ class SearchListPageState extends State<SearchListPage> {
     map[Parms.PAGE] = curPage.toString();
     map[Parms.SIZE] = Parms.SIZE_VALUE;
     map[Parms.QUERY] = widget.queryKey;
-
     HttpUtil.post(url, (data) {
       if (data != null) {
-//        List articles = data;
         List responseJson = data;
         List<ArticleModel> articles = responseJson.map((m) => ArticleModel.fromJson(m)).toList();
         listTotalSize = articles.length;
@@ -91,12 +89,8 @@ class SearchListPageState extends State<SearchListPage> {
             listData.clear();
           }
           curPage++;
-
           list1.addAll(listData);
           list1.addAll(articles);
-//          if (list1.length >= listTotalSize) {
-//            list1.add(Constants.END_LINE_TAG);
-//          }
           listData = list1;
         });
       }

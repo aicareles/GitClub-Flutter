@@ -15,5 +15,9 @@ class Api {
   static const String COLLECT_LIST = "geekdaily/getMyStarArticles";
   //关键字查询文章
   static const String ARTICLE_QUERY = "geekdaily/query";
+  //上传投稿文章
+  static const String UPLOAD_ARTICLE = "geekdaily/uploadArticle";
+  //上传文章图片
+  static const String UPLOAD_ARTICLE_IMG = "geekdaily/uploadArticleImg";
 
 }
