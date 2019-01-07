@@ -27,7 +27,6 @@ class ArticleDetailPageState extends State<ArticleDetailPage> {
   void initState() {
     super.initState();
     flutterWebViewPlugin.onStateChanged.listen((state) {
-      debugPrint('state:_' + state.type.toString());
       if (state.type == WebViewState.finishLoad) {
         // 加载完成
         setState(() {

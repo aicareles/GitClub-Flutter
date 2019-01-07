@@ -23,7 +23,7 @@ class CollectionPage extends StatefulWidget {
 }
 
 class CollectionPageState extends State<CollectionPage> {
-  List<ArticleModel> listData = new List<ArticleModel>();
+  List<Article> listData = new List<Article>();
 
   var bannerData;
   var curPage = 0;
@@ -121,10 +121,10 @@ class CollectionPageState extends State<CollectionPage> {
     HttpUtil.post(url, (data) {
       if (data != null) {
         List responseJson = data;
-        List<ArticleModel> articles = responseJson.map((m) => ArticleModel.fromJson(m)).toList();
+        List<Article> articles = responseJson.map((m) => Article.fromJson(m)).toList();
         listTotalSize += articles.length;
         setState(() {
-          List<ArticleModel> list1 = new List<ArticleModel>();
+          List<Article> list1 = new List<Article>();
           if (curPage == 0) {
             listData.clear();
           }

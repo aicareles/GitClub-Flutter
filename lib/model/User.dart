@@ -1,4 +1,4 @@
-class UserModel {
+class User {
 
   int user_id;
   int admin_status;
@@ -11,12 +11,12 @@ class UserModel {
   int score;
   String session_key;
 
-  UserModel(this.user_id, this.admin_status, this.avatar, this.city, this.date,
+  User(this.user_id, this.admin_status, this.avatar, this.city, this.date,
       this.gender, this.nick_name, this.open_id, this.score, this.session_key);
 
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return new UserModel(
+  factory User.fromJson(Map<String, dynamic> json) {
+    return new User(
         json['user_id'],
         json['admin_status'],
         json['avatar'],

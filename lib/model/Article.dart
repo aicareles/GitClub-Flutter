@@ -2,7 +2,7 @@
 
 import 'package:gitclub/model/User.dart';
 
-class ArticleModel {
+class Article {
 
   int article_id;
   String category;
@@ -19,15 +19,15 @@ class ArticleModel {
   String tag;
   String title;
   int un_stars;
-  UserModel userModel;
+  User userModel;
 
-  ArticleModel(this.article_id, this.category, this.child_category,
+  Article(this.article_id, this.category, this.child_category,
       this.comments, this.date, this.des, this.img_url, this.link, this.rank,
       this.review_status, this.stars, this.views, this.tag, this.title, this.un_stars, this.userModel);
 
 
-  factory ArticleModel.fromJson(Map<String, dynamic> json) {
-    return new ArticleModel(
+  factory Article.fromJson(Map<String, dynamic> json) {
+    return new Article(
         json['article_id'],
         json['category'],
         json['child_category'],
@@ -43,7 +43,7 @@ class ArticleModel {
         json['tag'],
         json['title'],
         json['un_stars'],
-        UserModel.fromJson(json['user'])
+        User.fromJson(json['user'])
     );
 
   }

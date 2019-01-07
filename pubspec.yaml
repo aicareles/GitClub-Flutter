@@ -18,6 +18,7 @@ dependencies:
   event_bus: "^1.0.1"
   http: '>=0.11.3+12'
   flutter_spinkit: "^3.0.0"
+  scoped_model: '0.3.0'
 
 dev_dependencies:
   flutter_test:

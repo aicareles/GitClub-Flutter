@@ -6,7 +6,7 @@ import 'package:gitclub/ui/article/ArticleDetailPage.dart';
 
 ///个人感觉条目比较复杂的话可以单独拿出来,而且可以复用.可以对比CollectListPage.dart中的item哪个更合理
 class CollectionItem extends StatefulWidget {
-  ArticleModel itemData;
+  Article itemData;
 
   CollectionItem(var itemData) {
     this.itemData = itemData;
@@ -20,7 +20,7 @@ class CollectionItem extends StatefulWidget {
 
 class CollectionItemState extends State<CollectionItem> {
 
-  void _itemClick(ArticleModel itemData) async {
+  void _itemClick(Article itemData) async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
       return new ArticleDetailPage(
         title: itemData.title,
