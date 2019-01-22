@@ -1,13 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:gitclub/constance/Constants.dart';
+import 'package:gitclub/app/GlobalTranslations.dart';
 import 'package:gitclub/constance/colors.dart';
 import 'package:gitclub/http/Api.dart';
 import 'package:gitclub/http/HttpUtil.dart';
-import 'package:gitclub/model/Article.dart';
 import 'package:gitclub/ui/submit/RadioGroup.dart';
-import 'package:gitclub/ui/submit/RadioTitle.dart';
 import 'package:gitclub/widget/Loading.dart';
 import 'package:gitclub/widget/ScrollFocusNode.dart';
 import 'package:gitclub/widget/Toast.dart';
@@ -31,8 +29,8 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
   List<RadioText> typeValues = List<RadioText>();
   List<RadioText> rankValues = List<RadioText>();
   String _languageValue = 'Android';
-  String _typeValue = '开源库';
-  String _rankValue = '所有人';
+  String _typeValue = '0';
+  String _rankValue = '0';
 
   double _currentPosition = 0.0;
 
@@ -52,24 +50,24 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
   }
 
   void initTypeValues() {
-    typeValues.add(RadioText('开源库'));
-    typeValues.add(RadioText('资讯'));
-    typeValues.add(RadioText('教程'));
-    typeValues.add(RadioText('书籍'));
-    typeValues.add(RadioText('工具'));
-    typeValues.add(RadioText('APP'));
-    typeValues.add(RadioText('活动'));
-    typeValues.add(RadioText('招聘'));
+    typeValues.add(RadioText('0', allTranslations.text('library')));
+    typeValues.add(RadioText('1', allTranslations.text('news')));
+    typeValues.add(RadioText('2', allTranslations.text('guide')));
+    typeValues.add(RadioText('3', allTranslations.text('book')));
+    typeValues.add(RadioText('4', allTranslations.text('tool')));
+    typeValues.add(RadioText('5', allTranslations.text('app')));
+    typeValues.add(RadioText('6', allTranslations.text('active')));
+    typeValues.add(RadioText('7', allTranslations.text('jobs')));
   }
 
   void initRankValues() {
-    rankValues.add(RadioText('所有人'));
-    rankValues.add(RadioText('入门'));
-    rankValues.add(RadioText('进阶'));
+    rankValues.add(RadioText('0', allTranslations.text('all')));
+    rankValues.add(RadioText('1', allTranslations.text('elementary')));
+    rankValues.add(RadioText('2', allTranslations.text('advanced')));
   }
 
   void initLanguageValues() {
-    languageValues.add(RadioText('Android'));
+    languageValues.add(RadioText('Android', 'Android'));
   }
 
   @override
@@ -101,19 +99,18 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-
     setState(() {
       _image = image;
     });
+    _uploadImg();
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text('投稿'),
+        title: Text(allTranslations.text('submission')),
       ),
       body: SingleChildScrollView(
         controller: _controller,
@@ -164,11 +161,11 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          title('语言'),
+          title(allTranslations.text('language')),
           language(),
-          title('分类'),
+          title(allTranslations.text('sorts')),
           type(),
-          title('适合人群'),
+          title(allTranslations.text('suitable')),
           rank(),
           fillEntries(),
           _image == null ? add() : photo(),
@@ -187,15 +184,25 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
         ),
       );
 
-  Widget submit() => MaterialButton(
-        child: Text('提交'),
+  Widget submit() => Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      MaterialButton(
+        minWidth: 300.0,
+        child: Text(
+          allTranslations.text('submit'),
+          style: TextStyle(color: AppColors.textWhite),
+        ),
         color: AppColors.colorPrimary,
         onPressed: () {
           setState(() {
             submitArticle();
+            _uploadArticle();
           });
         },
-      );
+      )
+    ],
+  );
 
   void submitArticle() {
     showDialog<Null>(
@@ -204,7 +211,7 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
         builder: (BuildContext context) {
           return new LoadingDialog(
             //调用对话框
-            text: '正在提交文章...',
+            text: allTranslations.text('submitting_article'),
           );
 //        return SpinKitRotatingCircle(
 //          color: Colors.white,
@@ -213,20 +220,31 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
         });
   }
 
-//  Navigator.pop(context); //关闭对话框
-
-  Widget add() => RaisedButton(
-        child: Text('选择图片'),
+  Widget add() => Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      RaisedButton(
+        child: Icon(
+          Icons.filter,
+          size: 80.0,
+        ),
         onPressed: () {
           getImage();
         },
-      );
+      )
+    ],
+  );
 
-  Widget photo() => Image.file(
-        _image,
-        width: 200.0,
-        height: 200.0,
-        fit: BoxFit.fill,
+  Widget photo() => GestureDetector(
+        child: Image.file(
+          _image,
+          width: 200.0,
+          height: 200.0,
+          fit: BoxFit.fill,
+        ),
+        onTap: () {
+          getImage();
+        },
       );
 
   Widget fillEntries() => Padding(
@@ -243,7 +261,7 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
                     Icons.title,
                     size: 15.0,
                   ),
-                  labelText: "标题,<100字",
+                  labelText: allTranslations.text('title_hint'),
                   labelStyle: TextStyle(color: AppColors.textHint),
                   contentPadding: EdgeInsets.all(10.0),
                   border: OutlineInputBorder(
@@ -260,7 +278,7 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
                     size: 15.0,
                   ),
                   labelStyle: TextStyle(color: AppColors.textHint),
-                  labelText: "描述,<140字",
+                  labelText: allTranslations.text('des_hint'),
                   contentPadding: EdgeInsets.all(10.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -276,7 +294,7 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
                     size: 15.0,
                   ),
                   labelStyle: TextStyle(color: AppColors.textHint),
-                  labelText: "链接,原文地址",
+                  labelText: allTranslations.text('link_hint'),
                   contentPadding: EdgeInsets.all(10.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -285,14 +303,14 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
             TextField(
               controller: _imgController,
               keyboardType: TextInputType.text,
-              maxLength: 140,
+              maxLength: 240,
               decoration: InputDecoration(
                   icon: Icon(
                     Icons.photo,
                     size: 15.0,
                   ),
                   labelStyle: TextStyle(color: AppColors.textHint),
-                  labelText: "图片，插入链接或上传本地图片",
+                  labelText: allTranslations.text('image_hint'),
                   contentPadding: EdgeInsets.all(10.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -314,8 +332,15 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
   //上传图片
   void _uploadImg() {
     String url = Api.UPLOAD_ARTICLE_IMG;
-    Map<String, String> map = Map();
-//    map["article_img"] =
+    HttpUtil.uploadFile(url, _image, (data) {
+      if (data != null) {
+        Toast.toast(context, allTranslations.text('upload_image_success'));
+        _imgController.text = data['article_img'];
+      }
+    }, errorCallback: (msg) {
+      scaffoldKey.currentState
+          .showSnackBar(new SnackBar(content: new Text(msg)));
+    });
   }
 
   //上传文章
@@ -329,19 +354,25 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
     map["category"] = _languageValue;
     map["child_category"] = _typeValue;
     map["rank"] = _rankValue;
-    map["article_img"] = _imgController.text;
+    map["img_url"] = _imgController.text;
     HttpUtil.post(
         url,
         (data) {
           if (data != null) {
+            hideDialog();
+            Toast.toast(context, allTranslations.text('upload_article_success'));
             Navigator.pop(context);
-            Toast.toast(context, '上传文章成功!');
           }
         },
         params: map,
         errorCallback: (msg) {
+          Navigator.pop(context);
           scaffoldKey.currentState
               .showSnackBar(new SnackBar(content: new Text(msg)));
         });
+  }
+
+  void hideDialog() {
+    Navigator.pop(context);
   }
 }

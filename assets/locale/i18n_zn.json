@@ -1,0 +1,57 @@
+{
+  "app_name": "GitClub",
+  "name_pwd_empty": "用户名或密码不能为空",
+  "login_success": "登录成功!",
+  "lucky": "福利",
+  "loading_failed": "加载失败，请重试",
+  "collect_empty": "赶紧去收藏吧",
+  "submit_empty": "赶紧去投稿吧",
+  "collection": "收藏",
+  "contribution": "贡献",
+  "form_empty": "请完善表单信息",
+  "pwd_no_same": "两次密码不一致",
+  "register_success": "注册成功",
+  "search_key": "搜索关键词",
+  "hot_key": "最热",
+  "new_key": "最新",
+  "video_key": "视频",
+  "beauty_key": "妹子欣赏",
+  "general_setting": "通用设置",
+  "english": "英文",
+  "theme": "主题",
+  "email": "邮件",
+  "sign_out": "退出登录",
+  "set_title": "设置",
+
+
+  "submission": "投稿",
+  "language": "语言",
+  "sorts": "分类",
+  "library": "开源库",
+  "news": "资讯",
+  "guide": "教程",
+  "book": "书籍",
+  "tool": "工具",
+  "app": "APP",
+  "active": "活动",
+  "jobs": "招聘",
+  "suitable": "适合人群",
+
+  "all": "所有人",
+  "elementary": "入门",
+  "advanced": "进阶",
+
+
+  "title_hint": "标题,<100字",
+  "des_hint": "描述,<140字",
+  "link_hint": "链接,原文地址",
+  "image_hint": "图片，插入链接或上传本地图片",
+
+
+  "upload_image_success": "上传图片成功",
+  "upload_article_success": "上传文章成功",
+  "submitting_article": "正在提交文章...",
+  "submit": "提交"
+
+
+}

@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:gitclub/constance/Constants.dart';
+import 'package:gitclub/constance/UserData.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -15,7 +17,13 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed('/home');
+    UserData.isLogin().then((isLogin) {
+      if(isLogin) {
+        Navigator.of(context).pushReplacementNamed('/home');
+      }else {
+        Navigator.of(context).pushReplacementNamed('/login');
+      }
+    });
   }
 
   @override
@@ -26,10 +34,6 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Center(
-        child: new Image.asset('images/ic_launcher_round.png'),
-      ),
-    );
+    return Image.asset(Images.SplashImage,fit: BoxFit.fill);
   }
 }

@@ -37,7 +37,7 @@ class RadioGroupState extends State<RadioGroup> {
         children: <Widget>[
           Radio(
             activeColor: AppColors.colorPrimary,
-            value: radio.titleValue,
+            value: radio.value,
             groupValue: widget.groupValue,
             onChanged: (value) {
               widget.onSelectedItem(value);
@@ -58,7 +58,8 @@ class RadioGroupState extends State<RadioGroup> {
 
 
 class RadioText {
+  String value;
   String titleValue;
-  RadioText(this.titleValue);
+  RadioText(this.value, this.titleValue);
 
 }

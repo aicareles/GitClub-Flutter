@@ -18,9 +18,17 @@ class Routes {
   static const String homeRoute = "/home";
 }
 
+class Fonts {
+  static const String quickFont = "Quicksand";
+}
+
 class Images {
-  static const String imageDir = "images";
+  static const String imageDir = "assets/images";
   static const String defalutHomeListAvatar = "$imageDir/ic_launcher_round.png";
+  static const String defalutBeauty = "$imageDir/defalutBeauty.jpg";
+  static const String SplashImage = "$imageDir/splash.jpg";
+  static const String LoginBackground = "$imageDir/login.jpg";
+  static const String TickImage = "$imageDir/tick.png";
 }
 
 class Parms {
@@ -28,6 +36,7 @@ class Parms {
   static final String SIZE = "size";
   static final String QUERY = "query";
   static final String USER_ID = "user_id";
+  static final String ARTICLE_ID = "article_id";
   static final String SIZE_VALUE = "10";
 }
 

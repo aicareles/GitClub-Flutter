@@ -25,6 +25,7 @@ class CollectionItemState extends State<CollectionItem> {
       return new ArticleDetailPage(
         title: itemData.title,
         url: itemData.link,
+        article_id: itemData.article_id.toString(),
       );
     }));
   }
@@ -68,6 +69,8 @@ class CollectionItemState extends State<CollectionItem> {
           child: new Text.rich(
             new TextSpan(text: widget.itemData.title),
             softWrap: true,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: new TextStyle(fontSize: FontSize.ITEM_TITLE_SIZE, color: AppColors.textBlack),
             textAlign: TextAlign.left,
           ),

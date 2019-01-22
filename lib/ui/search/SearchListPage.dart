@@ -40,8 +40,7 @@ class SearchListPageState extends State<SearchListPage> {
     _contraller.addListener(() {
       var maxScroll = _contraller.position.maxScrollExtent;
       var pixels = _contraller.position.pixels;
-
-      if (maxScroll == pixels && listData.length < listTotalSize) {
+      if (maxScroll == pixels) {
         _articleQuery();
       }
     });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gitclub/constance/colors.dart';
 
 class FancyFab extends StatefulWidget {
   final Function() onSubmitPressed;
@@ -31,8 +32,8 @@ class _FancyFabState extends State<FancyFab>
     _animateIcon =
         Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
     _buttonColor = ColorTween(
-      begin: Colors.blue,
-      end: Colors.blue,
+      begin: AppColors.colorPrimary,
+      end: AppColors.colorPrimary,
     ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Interval(
@@ -111,7 +112,7 @@ class _FancyFabState extends State<FancyFab>
         onPressed: animate,
         tooltip: 'Toggle',
         child: AnimatedIcon(
-          icon: AnimatedIcons.add_event,
+          icon: AnimatedIcons.menu_close,
           progress: _animateIcon,
         ),
       ),

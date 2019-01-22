@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:gitclub/app/GlobalTranslations.dart';
+import 'package:gitclub/constance/UserData.dart';
 import 'package:gitclub/model/Article.dart';
 import 'package:gitclub/ui/article/ArticleItem.dart';
 import 'package:gitclub/constance/Constants.dart';
@@ -11,9 +13,11 @@ import 'package:gitclub/widget/EndLine.dart';
 
 class CollectionPage extends StatefulWidget {
   int tag = 0;//0:收藏  1：贡献
+  ScrollController controller;
 
-  CollectionPage(ValueKey<int> key) : super(key: key) {
+  CollectionPage(ValueKey<int> key, ScrollController _controller) : super(key: key) {
     this.tag = key.value as int;
+    this.controller = _controller;
   }
 
   @override
@@ -29,32 +33,21 @@ class CollectionPageState extends State<CollectionPage> {
   var curPage = 0;
   var listTotalSize = 0;
 
-  ScrollController _contraller = new ScrollController();
   TextStyle titleTextStyle = new TextStyle(fontSize: 15.0);
   TextStyle subtitleTextStyle =
       new TextStyle(color: Colors.blue, fontSize: 12.0);
 
-  CollectionPageState() {
-    _contraller.addListener(() {
-      var maxScroll = _contraller.position.maxScrollExtent;
-      var pixels = _contraller.position.pixels;
-
-      if (maxScroll == pixels && listData.length < listTotalSize) {
-        getArticles();
-      }
-    });
-  }
-
   @override
   void initState() {
     super.initState();
+    widget.controller.addListener(() {
+      var maxScroll = widget.controller.position.maxScrollExtent;
+      var pixels = widget.controller.position.pixels;
+      if (maxScroll == pixels) {
+        getArticles();
+      }
+    });
     getArticles();
-  }
-
-  @override
-  void dispose() {
-    _contraller.dispose();
-    super.dispose();
   }
 
   Future<Null> _pullToRefresh() async {
@@ -75,7 +68,7 @@ class CollectionPageState extends State<CollectionPage> {
         bottom: false,
         child: new Builder(
           builder: (BuildContext context) {
-            return new CustomScrollView(
+            return listData.length != 0 ? new CustomScrollView(
 //              key: new PageStorageKey<_Page>(page),
               slivers: <Widget>[
                 new SliverOverlapInjector(
@@ -90,7 +83,7 @@ class CollectionPageState extends State<CollectionPage> {
                   sliver: new SliverFixedExtentList(
                     itemExtent: 200.0,
                     delegate: new SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
+                          (BuildContext context, int index) {
 //                        final ArticleModel data = listData[index];
                         return new Padding(
                           padding: const EdgeInsets.symmetric(
@@ -101,9 +94,11 @@ class CollectionPageState extends State<CollectionPage> {
                       },
                       childCount: listData.length,
                     ),
-                  ),
+                  )
                 ),
               ],
+            ) : Center(
+              child: Text(widget.tag == 0 ? allTranslations.text('collect_empty') : allTranslations.text('submit_empty')),
             );
           },
         ),
@@ -112,12 +107,15 @@ class CollectionPageState extends State<CollectionPage> {
   }
 
   //我的收藏/贡献
-  void getArticles() {
+  void getArticles() async{
     String url = widget.tag == 0 ? Api.COLLECT_LIST : Api.CONTRIBUTE_LIST;
     Map<String, String> map = new Map();
     map[Parms.PAGE] = curPage.toString();
     map[Parms.SIZE] = Parms.SIZE_VALUE;
-    map[Parms.USER_ID] = "3";
+    await UserData.getUserId().then((userId){
+      print("userid:"+userId.toString());
+      map[Parms.USER_ID] = userId.toString();
+    });
     HttpUtil.post(url, (data) {
       if (data != null) {
         List responseJson = data;
@@ -143,11 +141,9 @@ class CollectionPageState extends State<CollectionPage> {
 
   Widget buildItem(int i) {
     var itemData = listData[i];
-
     if (itemData is String && itemData == Constants.END_LINE_TAG) {
       return new EndLine();
     }
-
     return new CollectionItem(itemData);
   }
 }

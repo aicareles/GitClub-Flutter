@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:gitclub/constance/colors.dart';
 import 'package:gitclub/model/Article.dart';
 import 'package:gitclub/ui/article/ArticleItem.dart';
@@ -23,15 +24,15 @@ class HomeListPageState extends State<HomeListPage> {
   var curPage = 0;
   var listTotalSize = 0;
 
-  ScrollController _contraller = new ScrollController();
+  ScrollController _controller = new ScrollController();
   TextStyle titleTextStyle = new TextStyle(fontSize: 15.0);
   TextStyle subtitleTextStyle =
       new TextStyle(color: AppColors.colorPrimary, fontSize: 12.0);
 
   HomeListPageState() {
-    _contraller.addListener(() {
-      var maxScroll = _contraller.position.maxScrollExtent;
-      var pixels = _contraller.position.pixels;
+    _controller.addListener(() {
+      var maxScroll = _controller.position.maxScrollExtent;
+      var pixels = _controller.position.pixels;
 
       if (maxScroll == pixels && listData.length < listTotalSize) {
         getArticlelist();
@@ -47,7 +48,7 @@ class HomeListPageState extends State<HomeListPage> {
 
   @override
   void dispose() {
-    _contraller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -65,9 +66,10 @@ class HomeListPageState extends State<HomeListPage> {
       );
     } else {
       Widget listView = new ListView.builder(
+        shrinkWrap: true,
         itemCount: listData.length + 1,
         itemBuilder: (context, i) => buildItem(i),
-        controller: _contraller,
+        controller: _controller,
       );
 
       return new RefreshIndicator(child: listView, onRefresh: _pullToRefresh);

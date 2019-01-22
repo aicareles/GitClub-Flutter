@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:gitclub/constance/Constants.dart';
+import 'package:gitclub/http/Api.dart';
+import 'package:gitclub/http/HttpUtil.dart';
 
 //文章详情界面
 class ArticleDetailPage extends StatefulWidget {
   String title;
   String url;
+  String article_id;
 
   ArticleDetailPage({
     Key key,
     @required this.title,
     @required this.url,
+    @required this.article_id,
   }) : super(key: key);
 
   @override
@@ -26,6 +31,7 @@ class ArticleDetailPageState extends State<ArticleDetailPage> {
   @override
   void initState() {
     super.initState();
+    viewArticle();
     flutterWebViewPlugin.onStateChanged.listen((state) {
       if (state.type == WebViewState.finishLoad) {
         // 加载完成
@@ -38,6 +44,12 @@ class ArticleDetailPageState extends State<ArticleDetailPage> {
         });
       }
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    flutterWebViewPlugin.dispose();
   }
 
   @override
@@ -59,5 +71,11 @@ class ArticleDetailPageState extends State<ArticleDetailPage> {
       withLocalStorage: true,
       withJavascript: true,
     );
+  }
+
+  void viewArticle() {
+    Map<String, String> map = new Map();
+    map[Parms.ARTICLE_ID] = widget.article_id.toString();
+    HttpUtil.post(Api.VIEW_ARTICLE, (data) {},params: map);
   }
 }

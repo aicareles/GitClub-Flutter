@@ -1,0 +1,57 @@
+{
+  "app_name": "GitClub",
+  "name_pwd_empty": "Username or password cannot be empty",
+  "login_success": "Login Successful",
+  "lucky": "Welfare",
+  "loading_failed": "Loading failed, please try again",
+  "collect_empty": "Go to collect it",
+  "submit_empty": "Go and submit it.",
+  "collection": "Collection",
+  "contribution": "Contribution",
+  "form_empty": "Please improve the form information",
+  "pwd_no_same": "Confirm password error",
+  "register_success": "Register Successed",
+  "search_key": "Enter keyword",
+  "hot_key": "Hottest",
+  "new_key": "Latest",
+  "video_key": "Video",
+  "beauty_key": "Beauty Show",
+  "general_setting": "General Setting",
+  "english": "English",
+  "theme": "Theme",
+  "email": "Email",
+  "sign_out": "Sign Out",
+  "set_title": "Settings",
+
+
+  "submission": "Submission",
+  "language": "Development Languages",
+  "sorts": "Sort",
+  "library": "Library",
+  "news": "News",
+  "guide": "Guide",
+  "book": "Books",
+  "tool": "Tools",
+  "app": "APP",
+  "active": "Active",
+  "jobs": "Jobs",
+  "suitable": "Suitable",
+
+  "all": "Everyone",
+  "elementary": "Elementary",
+  "advanced": "Advanced",
+
+
+  "title_hint": "Title, <100 words",
+  "des_hint": "Description, <140 words",
+  "link_hint": "Link, original address",
+  "image_hint": "Image, insert link or upload local image",
+
+
+  "upload_image_success": "Upload image successfully",
+  "upload_article_success": "Upload article successfully",
+  "submitting_article": "Submitting article",
+  "submit": "Submit"
+
+
+}

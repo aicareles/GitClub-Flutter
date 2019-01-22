@@ -4,6 +4,8 @@ import 'package:gitclub/constance/colors.dart';
 import 'package:gitclub/model/Article.dart';
 import 'package:gitclub/ui/article/ArticleDetailPage.dart';
 import 'package:gitclub/utils/StringUtils.dart';
+import 'package:gitclub/utils/date_util.dart';
+import 'package:gitclub/utils/timeline_util.dart';
 
 ///个人感觉条目比较复杂的话可以单独拿出来,而且可以复用.可以对比CollectListPage.dart中的item哪个更合理
 class ArticleItem extends StatefulWidget {
@@ -34,7 +36,6 @@ class ArticleItem extends StatefulWidget {
 }
 
 class ArticleItemState extends State<ArticleItem> {
-
   @override
   Widget build(BuildContext context) {
     return new Card(
@@ -53,6 +54,7 @@ class ArticleItemState extends State<ArticleItem> {
       return new ArticleDetailPage(
         title: itemData.title,
         url: itemData.link,
+        article_id: itemData.article_id.toString(),
       );
     }));
   }
@@ -78,7 +80,10 @@ class ArticleItemState extends State<ArticleItem> {
               )
             ],
           )),
-          new Text(widget._itemData.date.toString())
+          new Text(
+            TimelineUtil.formatByDateTime(DateUtil.getDateTime(widget._itemData.date.toString())),
+            style: TextStyle(color: AppColors.text),
+          )
         ],
       );
 
@@ -92,7 +97,7 @@ class ArticleItemState extends State<ArticleItem> {
               softWrap: true,
               style: new TextStyle(
                   fontSize: FontSize.ITEM_TITLE_SIZE,
-                  color: AppColors.textBlack),
+                  color: AppColors.textTitile),
               textAlign: TextAlign.left,
             ),
           )
@@ -103,10 +108,12 @@ class ArticleItemState extends State<ArticleItem> {
 //      mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           new Expanded(
-            child: new Image.network(
-              widget._itemData.img_url,
-            ),
-          ),
+              child: FadeInImage.assetNetwork(
+                  placeholder: Images.TickImage,
+                  width: widget._itemData.img_url.isNotEmpty ? 200.0 : 0.0,
+                  height: widget._itemData.img_url.isNotEmpty ? 200.0 : 0.0,
+                  image: widget._itemData.img_url,
+                  fit: BoxFit.contain)),
         ],
       );
 

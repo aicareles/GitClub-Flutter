@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gitclub/constance/Constants.dart';
 import 'package:gitclub/constance/colors.dart';
+import 'package:gitclub/ui/test/MainModel.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class TestPage extends StatefulWidget {
   @override
@@ -12,19 +14,33 @@ class TestPage extends StatefulWidget {
 class TestPageState extends State<TestPage> {
 
   List<Article> articles = List<Article>();
+  TestModel testModel = TestModel();
 
   @override
   void initState() {
     super.initState();
     articles = ArticleFactory.getArticles();
-    print("articles:+++"+articles.length.toString());
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    final testModel = ScopedModel.of<TestModel>(context);
+    return Scaffold(
       appBar: AppBar(title: Text('测试界面')),
-      body: _body(),
+//      body: _body(),
+      body: Center(
+        child: Text(
+            testModel.count.toString()
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+            Icons.keyboard_arrow_right
+        ),
+        onPressed: (){
+          Navigator.pushNamed(context, "/test2");
+        },
+      ),
     );
   }
 
