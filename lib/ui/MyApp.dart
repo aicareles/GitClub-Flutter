@@ -20,6 +20,7 @@ import 'package:gitclub/ui/test/test2.dart';
 import 'package:gitclub/ui/video/VideoPage.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'dart:io';
 
 //首页
 class GitClubApp extends StatefulWidget {
