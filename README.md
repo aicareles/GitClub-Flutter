@@ -20,20 +20,20 @@ GitClub是一款分享一些优秀的、新的Android开源库，一些重要的
 #### 四、效果展示
 先来看一下效果页面（直接完全基于Flutter脚手架开发，没有专业UI设计，UI不够完美敬请谅解）。
 
-<figure class="half">
+<center class="half">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d8e6a1d202fd?w=117&h=248&f=jpeg&s=8262">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d92cef8a1ef8?w=117&h=248&f=jpeg&s=10704">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d92dc5c3e6e1?w=117&h=247&f=jpeg&s=4073">
-</figure>
+</center>
 
-<figure class="half">
+<center class="half">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d92eb26a2e6a?w=117&h=247&f=jpeg&s=10334">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d92f4617dd50?w=117&h=247&f=jpeg&s=4689">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d92ffc05877d?w=117&h=247&f=jpeg&s=7866">
-</figure>
+</center>
 
-<figure class="half">
+<center class="half">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d9308b10d5a1?w=117&h=247&f=jpeg&s=11744">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d9312dfcc6a5?w=117&h=247&f=jpeg&s=9446">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d931b5c36e9c?w=117&h=247&f=jpeg&s=7629">
-</figure>
+</center>
