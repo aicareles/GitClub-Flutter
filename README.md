@@ -1,4 +1,4 @@
-# gitclub
+# GitClub-Flutter
 
 #### 一、Flutter的简介
 Flutter是谷歌最早于2015年Dart开发者峰会亮相并推出的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面，目的是能够以每秒120帧的速度持续渲染，基于该特性Flutter正在被用作一些游戏开发。Flutter可以与现有的代码一起工作，被越来越多的开发者和组织使用，并且Flutter是完全免费且开源的，去年12月份Flutter1.0稳定版正式推出。[Flutter中文网](https://flutterchina.club/)
@@ -19,6 +19,7 @@ GitClub是一款分享一些优秀的、新的Android开源库，一些重要的
 
 #### 四、效果展示
 先来看一下效果页面（直接完全基于Flutter脚手架开发，没有专业UI设计，UI不够完美敬请谅解）。
+
 <figure class="half">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d8e6a1d202fd?w=117&h=248&f=jpeg&s=8262">
     <img src="https://user-gold-cdn.xitu.io/2019/1/24/1687d92cef8a1ef8?w=117&h=248&f=jpeg&s=10704">
