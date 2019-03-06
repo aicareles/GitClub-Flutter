@@ -13,6 +13,7 @@ GitClub是一款分享一些优秀的、新的Android开源库，一些重要的
 ![](https://user-gold-cdn.xitu.io/2019/1/23/1687a177daaf675c?w=601&h=186&f=png&s=6700)
 
 ![](https://user-gold-cdn.xitu.io/2019/1/23/1687a16c0fe7887a?w=426&h=211&f=png&s=5400)
+
 这是几个意思啊，好吓人啊，难道支持所有平台？呵呵，自己去体会吧，这个API已经可以看出Google的野心。第一个TargetPlatform中的意思其实是提供判断当前手机系统的平台版本，以便于开发者进行差异化处理，后一个嘛，要等，现在我还不敢把所有的事情说死，毕竟像Google这种公司说不定炒的很火的产品，第二天就宣布不做了，这个也是常事，现在把事情说的太死，以后万一没火起来岂不是自己打脸。言归正传，使用Flutter开发首先必须要安装Flutter的SDK，以及配置一些环境，这个自行搜索，今天我们的主要内容是[分享项目GitHub地址](https://github.com/AICareless/GitClub-Flutter)
 ##### 3、Flutter和Fuchsia系统的关系
 既然主角是Flutter那就顺带介绍下Fuchsia系统，目前移动操作系统最流行的莫过于Android和iOS两个阵营，而Fuchsia与两者完全不同，Android是基于Linux内核，所以内存管理机制与Linux很相似，这就是Android始终存在一个弊端，也就是JVM的存在，虚拟机的存在是导致Android手机负载过重的一个根本问题，可以想象一下当你打开一个应用程序，系统会自动为该程序创建并维护一个虚拟机，当应用创建过多的时候，运行内存占用会越来越大，这就是大家所经常所说的为什么Android手机4G的运行内存为何还敌不过iOS 2G的内存？这就是体现iOS比Android稳定的一个例子了（勿喷，本人也是Android阵营）。还有一个因素就是Android当今市场碎片化太过严重，几乎国内安卓手机都用厂商的定制ROM，Google想缩紧权限也是有心无力，那么Fuchsia的出现就是为了解决这些弊端，而且Fuchsia如今已被证实将支持兼容Android应用，并且Fuchsia 是使用 Flutter SDK 开发的，所以 Fuchsia 的一部分可以在 Android 设备上运行。不过Android的小伙伴也不必过于担心，针对Fuchsia系统的正式出现到普及还未可知，但技多不压身，学习并入手Flutter还是很有必要的。
