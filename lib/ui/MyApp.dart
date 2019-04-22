@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:gitclub/app/Application.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gitclub/app/GlobalTranslations.dart';
 import 'package:gitclub/app/Translations.dart';
 import 'package:gitclub/constance/Constants.dart';
 import 'package:gitclub/constance/colors.dart';
-import 'package:gitclub/model/ThemeStateModel.dart';
+import 'package:gitclub/ui/NotFoundPage.dart';
+import 'package:gitclub/ui/Splash.dart';
 import 'package:gitclub/ui/home/HomePage.dart';
 import 'package:gitclub/ui/login/login.dart';
 import 'package:gitclub/ui/meizi/BeautiesPage.dart';
 import 'package:gitclub/ui/my/PersonPage.dart';
-import 'package:gitclub/ui/NotFoundPage.dart';
 import 'package:gitclub/ui/register/register.dart';
 import 'package:gitclub/ui/search/SearchPage.dart';
-import 'package:gitclub/ui/Splash.dart';
 import 'package:gitclub/ui/settings/SetPage.dart';
 import 'package:gitclub/ui/submit/SubmitPage.dart';
 import 'package:gitclub/ui/test/test.dart';
 import 'package:gitclub/ui/test/test2.dart';
 import 'package:gitclub/ui/video/VideoPage.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:scoped_model/scoped_model.dart';
-import 'dart:io';
 
 //首页
 class GitClubApp extends StatefulWidget {
