@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gitclub/Components/Form.dart';
-import 'package:gitclub/Components/SignInUpButton.dart';
-import 'package:gitclub/Components/SignUpLink.dart';
-import 'package:gitclub/Components/WhiteTick.dart';
+import 'package:gitclub/components/Form.dart';
+import 'package:gitclub/components/SignUpLink.dart';
+import 'package:gitclub/components/WhiteTick.dart';
 import 'package:gitclub/app/GlobalTranslations.dart';
+import 'package:gitclub/components/SignInUpButton.dart';
 import 'package:gitclub/constance/UserData.dart';
 import 'package:gitclub/http/Api.dart';
 import 'package:gitclub/http/HttpUtil.dart';

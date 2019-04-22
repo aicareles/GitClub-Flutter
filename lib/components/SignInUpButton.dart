@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gitclub/Components/Form.dart';
+import 'package:gitclub/components/Form.dart';
 
 class SignInUp extends StatelessWidget {
 

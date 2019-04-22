@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:gitclub/Components/Form.dart';
+import 'package:gitclub/components/Form.dart';
 
 class StaggerAnimation extends StatelessWidget {
   FormType _formType;

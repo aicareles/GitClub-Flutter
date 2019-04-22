@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './InputFields.dart';
+import 'package:gitclub/components/InputFields.dart';
 
 class FormContainer extends StatelessWidget {
   FormType _formType;

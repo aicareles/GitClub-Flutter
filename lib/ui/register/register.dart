@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gitclub/Components/Form.dart';
-import 'package:gitclub/Components/SignInUpButton.dart';
-import 'package:gitclub/Components/WhiteTick.dart';
+import 'package:gitclub/components/Form.dart';
+import 'package:gitclub/components/SignInUpButton.dart';
+import 'package:gitclub/components/WhiteTick.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/animation.dart';
 import 'dart:async';

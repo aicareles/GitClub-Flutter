@@ -14,8 +14,6 @@ import 'package:gitclub/ui/register/register.dart';
 import 'package:gitclub/ui/search/SearchPage.dart';
 import 'package:gitclub/ui/settings/SetPage.dart';
 import 'package:gitclub/ui/submit/SubmitPage.dart';
-import 'package:gitclub/ui/test/test.dart';
-import 'package:gitclub/ui/test/test2.dart';
 import 'package:gitclub/ui/video/VideoPage.dart';
 
 //首页
@@ -52,13 +50,6 @@ class GitClubAppState extends State<GitClubApp> {
   @override
   Widget build(BuildContext context) {
     return materialApp;
-//    return ScopedModel<ThemeStateModel>(
-//      model: ThemeStateModel(),
-//      child: ScopedModelDescendant<ThemeStateModel>(
-//      builder: (context, child, model){
-//        return materialApp(model.color);
-//      }),
-//    );
   }
 
   static final materialApp = MaterialApp(
@@ -72,9 +63,7 @@ class GitClubAppState extends State<GitClubApp> {
       "/person": (BuildContext context) => PersonPage(),
       "/submit": (BuildContext context) => SubmitPage(),
       "/meizi": (BuildContext context) => BeautiesPage(),
-      "/video": (BuildContext context) => VideoPage(),
-      "/test": (BuildContext context) => TestPage(),
-      "/test2": (BuildContext context) => Test2Page(),
+      "/video": (BuildContext context) => VideoPage()
     },
     onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(
         builder: (context) => new NotFoundPage(

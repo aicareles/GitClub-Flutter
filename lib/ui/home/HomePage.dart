@@ -45,16 +45,6 @@ class HomePageState extends State<HomePage> {
       if (maxScroll == pixels) {
         getArticlelist();
       }
-      if (_controller.position.userScrollDirection == ScrollDirection.reverse) {
-        setState(() {
-          _isVisible = false;
-        });
-      }
-      if (_controller.position.userScrollDirection == ScrollDirection.forward) {
-        setState(() {
-          _isVisible = true;
-        });
-      }
     });
   }
 
@@ -77,21 +67,6 @@ class HomePageState extends State<HomePage> {
       );
     } else {
       Widget listView = NotificationListener(
-          onNotification: (scrollNotification) {
-//            if (scrollNotification is ScrollStartNotification) {
-//              //开始滑动
-//            } else if (scrollNotification is ScrollUpdateNotification) {
-//              //正在滑动
-//              setState(() {
-//                _isVisible = false;
-//              });
-//            } else if (scrollNotification is ScrollEndNotification) {
-//              //滑动结束
-//              setState(() {
-//                _isVisible = true;
-//              });
-//            }
-          },
           child: new ListView.builder(
             shrinkWrap: true,
             itemCount: listData.length + 1,
@@ -145,7 +120,6 @@ class HomePageState extends State<HomePage> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(
-//          Translations.of(context).text('main_title'),
           allTranslations.text('app_name'),
           style: new TextStyle(color: Colors.white),
         ),
