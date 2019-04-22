@@ -83,14 +83,11 @@ class SearchListPageState extends State<SearchListPage> {
         List<Article> articles = responseJson.map((m) => Article.fromJson(m)).toList();
         listTotalSize = articles.length;
         setState(() {
-          List<Article> list1 = new List<Article>();
           if (curPage == 0) {
             listData.clear();
           }
           curPage++;
-          list1.addAll(listData);
-          list1.addAll(articles);
-          listData = list1;
+          listData.addAll(articles);
         });
       }
     }, params: map);

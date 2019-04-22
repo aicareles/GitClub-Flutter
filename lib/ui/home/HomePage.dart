@@ -68,11 +68,11 @@ class HomePageState extends State<HomePage> {
     } else {
       Widget listView = NotificationListener(
           child: new ListView.builder(
-            shrinkWrap: true,
-            itemCount: listData.length + 1,
-            itemBuilder: (context, i) => buildItem(i),
-            controller: _controller,
-          ));
+        shrinkWrap: true,
+        itemCount: listData.length + 1,
+        itemBuilder: (context, i) => buildItem(i),
+        controller: _controller,
+      ));
 
       return new RefreshIndicator(child: listView, onRefresh: _pullToRefresh);
     }
@@ -90,14 +90,11 @@ class HomePageState extends State<HomePage> {
             responseJson.map((m) => Article.fromJson(m)).toList();
         listTotalSize += data.length;
         setState(() {
-          List<Article> list1 = new List<Article>();
           if (curPage == 0) {
             listData.clear();
           }
           curPage++;
-          list1.addAll(listData);
-          list1.addAll(articles);
-          listData = list1;
+          listData.addAll(articles);
         });
       }
     }, params: map);
