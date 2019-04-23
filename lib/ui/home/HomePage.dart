@@ -66,13 +66,12 @@ class HomePageState extends State<HomePage> {
         child: new CircularProgressIndicator(),
       );
     } else {
-      Widget listView = NotificationListener(
-          child: new ListView.builder(
+      Widget listView = ListView.builder(
         shrinkWrap: true,
         itemCount: listData.length + 1,
         itemBuilder: (context, i) => buildItem(i),
         controller: _controller,
-      ));
+      );
 
       return new RefreshIndicator(child: listView, onRefresh: _pullToRefresh);
     }
