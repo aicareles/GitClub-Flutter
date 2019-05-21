@@ -1,32 +1,32 @@
 class User {
 
-  int user_id;
-  int admin_status;
+  int userId;
+  int adminStatus;
   String avatar;
   String city;
   String date;
   String gender;
-  String nick_name;
-  String open_id;
+  String userName;
+  String openId;
   int score;
-  String session_key;
+  String sessionKey;
 
-  User(this.user_id, this.admin_status, this.avatar, this.city, this.date,
-      this.gender, this.nick_name, this.open_id, this.score, this.session_key);
+  User(this.userId, this.adminStatus, this.avatar, this.city, this.date,
+      this.gender, this.userName, this.openId, this.score, this.sessionKey);
 
 
   factory User.fromJson(Map<String, dynamic> json) {
     return new User(
-        json['user_id'],
-        json['admin_status'],
+        json['userId'],
+        json['adminStatus'],
         json['avatar'],
         json['city'],
         json['date'],
         json['gender'],
-        json['nick_name'],
-        json['open_id'],
+        json['userName'],
+        json['openId'],
         json['score'],
-        json['session_key']
+        json['sessionKey']
     );
   }
 }

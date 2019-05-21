@@ -130,7 +130,7 @@ class RegisterPageState extends State<RegisterPage>
     }
     String url = Api.REGISTER;
     Map<String, String> map = new Map();
-    map["nick_name"] = _userNameController.text;
+    map["username"] = _userNameController.text;
     map["password"] = _pwdController.text;
     HttpUtil.post(
         url,

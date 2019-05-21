@@ -54,7 +54,7 @@ class ArticleItemState extends State<ArticleItem> {
       return new ArticleDetailPage(
         title: itemData.title,
         url: itemData.link,
-        article_id: itemData.article_id.toString(),
+        article_id: itemData.articleId.toString(),
       );
     }));
   }
@@ -74,7 +74,7 @@ class ArticleItemState extends State<ArticleItem> {
                     height: Demins.ITEM_AVATAR_SIZE),
               ),
               new Container(
-                child: new Text(widget._itemData.userModel.nick_name,
+                child: new Text(widget._itemData.userModel.userName,
                     style: new TextStyle(color: Theme.of(context).accentColor)),
                 padding: EdgeInsets.all(5.0),
               )
@@ -110,9 +110,9 @@ class ArticleItemState extends State<ArticleItem> {
           new Expanded(
               child: FadeInImage.assetNetwork(
                   placeholder: Images.TickImage,
-                  width: widget._itemData.img_url.isNotEmpty ? 200.0 : 0.0,
-                  height: widget._itemData.img_url.isNotEmpty ? 200.0 : 0.0,
-                  image: widget._itemData.img_url,
+                  width: widget._itemData.imgUrl.isNotEmpty ? 200.0 : 0.0,
+                  height: widget._itemData.imgUrl.isNotEmpty ? 200.0 : 0.0,
+                  image: widget._itemData.imgUrl,
                   fit: BoxFit.contain)),
         ],
       );

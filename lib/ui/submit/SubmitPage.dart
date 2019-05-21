@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gitclub/app/GlobalTranslations.dart';
+import 'package:gitclub/constance/UserData.dart';
 import 'package:gitclub/constance/colors.dart';
 import 'package:gitclub/http/Api.dart';
 import 'package:gitclub/http/HttpUtil.dart';
@@ -335,7 +336,7 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
     HttpUtil.uploadFile(url, _image, (data) {
       if (data != null) {
         Toast.toast(context, allTranslations.text('upload_image_success'));
-        _imgController.text = data['article_img'];
+        _imgController.text = data['articleImg'];
       }
     }, errorCallback: (msg) {
       scaffoldKey.currentState
@@ -344,17 +345,20 @@ class SubmitPageState extends State<SubmitPage> with WidgetsBindingObserver {
   }
 
   //上传文章
-  void _uploadArticle() {
+  void _uploadArticle() async{
     String url = Api.UPLOAD_ARTICLE;
     Map<String, String> map = new Map();
     map["title"] = _titleController.text;
     map["des"] = _desController.text;
-    map["contributor_id"] = '3';
+    await UserData.getUserId().then((userId){
+      print("contributorId:"+userId.toString());
+      map["contributorId"] = '3';
+    });
     map["link"] = _linkController.text;
     map["category"] = _languageValue;
-    map["child_category"] = _typeValue;
+    map["childCategory"] = _typeValue;
     map["rank"] = _rankValue;
-    map["img_url"] = _imgController.text;
+    map["imgUrl"] = _imgController.text;
     HttpUtil.post(
         url,
         (data) {

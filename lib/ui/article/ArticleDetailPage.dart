@@ -76,6 +76,8 @@ class ArticleDetailPageState extends State<ArticleDetailPage> {
   void viewArticle() {
     Map<String, String> map = new Map();
     map[Parms.ARTICLE_ID] = widget.article_id.toString();
-    HttpUtil.post(Api.VIEW_ARTICLE, (data) {},params: map);
+    HttpUtil.post(Api.VIEW_ARTICLE, (data) {
+      print("data:"+data.toString());
+    },params: map);
   }
 }

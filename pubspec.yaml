@@ -27,6 +27,7 @@ dependencies:
   video_player: ^0.8.0
   scoped_model: '0.3.0'
   decimal: ^0.3.2
+  rxdart: ^0.21.0
 
 dev_dependencies:
   flutter_test:

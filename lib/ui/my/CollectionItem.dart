@@ -25,7 +25,7 @@ class CollectionItemState extends State<CollectionItem> {
       return new ArticleDetailPage(
         title: itemData.title,
         url: itemData.link,
-        article_id: itemData.article_id.toString(),
+        article_id: itemData.articleId.toString(),
       );
     }));
   }
@@ -49,7 +49,7 @@ class CollectionItemState extends State<CollectionItem> {
                 ),
                 new Container(
                   child: new Text(
-                      widget.itemData.userModel.nick_name,
+                      widget.itemData.userModel.userName,
                       style: new TextStyle(color: Theme
                           .of(context)
                           .accentColor)

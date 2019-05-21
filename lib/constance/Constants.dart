@@ -35,8 +35,8 @@ class Parms {
   static final String PAGE = "page";
   static final String SIZE = "size";
   static final String QUERY = "query";
-  static final String USER_ID = "user_id";
-  static final String ARTICLE_ID = "article_id";
+  static final String USER_ID = "userId";
+  static final String ARTICLE_ID = "articleId";
   static final String SIZE_VALUE = "10";
 }
 

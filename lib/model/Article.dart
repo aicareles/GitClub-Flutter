@@ -4,45 +4,45 @@ import 'package:gitclub/model/User.dart';
 
 class Article {
 
-  int article_id;
+  int articleId;
   String category;
-  int child_category;
+  int childCategory;
   int comments;
   String date;
   String des;
-  String img_url;
+  String imgUrl;
   String link;
   int rank;
-  int review_status;
+  int reviewStatus;
   int stars;
   int views;
   String tag;
   String title;
-  int un_stars;
+  int unStars;
   User userModel;
 
-  Article(this.article_id, this.category, this.child_category,
-      this.comments, this.date, this.des, this.img_url, this.link, this.rank,
-      this.review_status, this.stars, this.views, this.tag, this.title, this.un_stars, this.userModel);
+  Article(this.articleId, this.category, this.childCategory,
+      this.comments, this.date, this.des, this.imgUrl, this.link, this.rank,
+      this.reviewStatus, this.stars, this.views, this.tag, this.title, this.unStars, this.userModel);
 
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return new Article(
-        json['article_id'],
+        json['articleId'],
         json['category'],
-        json['child_category'],
+        json['childCategory'],
         json['comments'],
         json['date'],
         json['des'],
-        json['img_url'],
+        json['imgUrl'],
         json['link'],
         json['rank'],
-        json['review_status'],
+        json['reviewStatus'],
         json['stars'],
         json['views'],
         json['tag'],
         json['title'],
-        json['un_stars'],
+        json['unStars'],
         User.fromJson(json['user'])
     );
 

@@ -151,7 +151,7 @@ class LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     print("_userNameController.text:"+_userNameController.text);
     String url = Api.LOGIN;
     Map<String, String> map = new Map();
-    map["userName"] = _userNameController.text;
+    map["username"] = _userNameController.text;
     map["password"] = _pwdController.text;
     HttpUtil.post(
         url,

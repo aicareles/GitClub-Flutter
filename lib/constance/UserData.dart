@@ -10,8 +10,8 @@ class UserData {
   static Future saveLoginInfo(var user) async {
     print('isLogin');
     SharedPreferences sp = await SharedPreferences.getInstance();
-    await sp.setString(USERNAME, user['nick_name']);
-    await sp.setInt(USERID, user['user_id']);
+    await sp.setString(USERNAME, user['userName']);
+    await sp.setInt(USERID, user['userId']);
     await sp.setBool(IS_LOGIN, true);
   }
 
